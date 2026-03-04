@@ -4,7 +4,7 @@
 
 #define MAX_QUANT 1023
 
-PotentiometerIntput::PotentiometerInput(IHAL hal, int pin) : m_hal{hal}, m_pin{pin} {}
+PotentiometerIntput::PotentiometerInput(IHAL &hal, int pin) : m_hal{hal}, m_pin{pin} {}
 
 float PotentiometerInput::getValue() {
 	int quant = m_hal.analogRead(m_pin);

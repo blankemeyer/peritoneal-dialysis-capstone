@@ -15,12 +15,12 @@
 
 class PotentiometerInput : public IInput {
 public:
-	PotentiometerInput(IHAL hal, int pin);
+	PotentiometerInput(IHAL &hal, int pin);
 
 	float getValue() override;
 
 private:
-	IHAL m_hal;
+	IHAL &m_hal;
 	int m_pin;
 };
 
