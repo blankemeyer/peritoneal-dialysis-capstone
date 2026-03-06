@@ -5,6 +5,10 @@ lint:
 	clang-format --dry-run \
 		$$(find src lib include test -regex ".*\.\(cpp\|h\)")
 
+format:
+	clang-format -i \
+		$$(find src lib include test -regex ".*\.\(cpp\|h\)")
+
 clean:
 	pio run -e uno -t clean
 	pio run -e native -t clean
