@@ -2,9 +2,7 @@
 
 #include <Arduino.h>
 
-void setup() {
-	short test = (int)3;
-}
+void setup() {}
 
 void loop() {}
 
