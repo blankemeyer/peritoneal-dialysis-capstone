@@ -2,6 +2,8 @@
 
 #include <assert.h>
 
+// TODO: should be defined by IHAL method, e.g., a member function
+//       maxInputQuant()
 #define MAX_QUANT 1023
 
 PotentiometerInput::PotentiometerInput(IHAL &hal, int pin) : m_hal{hal}, m_pin{pin} {}
