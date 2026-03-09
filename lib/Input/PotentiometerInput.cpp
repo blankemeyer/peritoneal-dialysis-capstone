@@ -1,4 +1,4 @@
-#include "PotentiometerInput.h"
+#include <PotentiometerInput.h>
 
 #include <assert.h>
 
