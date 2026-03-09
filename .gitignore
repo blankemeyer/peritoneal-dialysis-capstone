@@ -5,4 +5,5 @@
 .vscode/ipch
 .envrc
 .direnv
+doc
 shell.nix
