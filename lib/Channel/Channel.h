@@ -1,11 +1,33 @@
 #ifndef CHANNEL_H
 #define CHANNEL_H
 
+#include <IInput.h>
+#include <IOutput.h>
+
 /**
- * Channel
- * 
- * Owns one input and one output. Has an update method to read from the input
- * and write to the output. Also has a method to get the current output value.
+ * Represents a control channel from one input to one output.
  */
+class Channel {
+private:
+	IInput &input;
+	IOutput &output;
+
+public:
+	/**
+	 * @param input The input source (e.g., potentiometer)
+	 * @param output The output (e.g., a PWM pin)
+	 */
+	Channel(IInput &input, IOutput &output);
+
+	/**
+	 * Read from the input and write to the output.
+	 */
+	void update();
+
+	/**
+	 * @return The current output value between zero and one.
+	 */
+	float getOutputValue();
+};
 
 #endif // CHANNEL_H
