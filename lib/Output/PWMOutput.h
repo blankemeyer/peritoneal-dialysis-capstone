@@ -21,11 +21,13 @@ public:
 	 */
 	PWMOutput(IHAL &hal, int pin);
 
+	float getValue() override;
 	void setValue(float value) override;
 
 private:
 	IHAL &m_hal;
 	int m_pin;
+	float m_value;
 };
 
 #endif // PWM_OUTPUT_H

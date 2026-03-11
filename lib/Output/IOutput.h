@@ -13,6 +13,11 @@ public:
 	virtual ~IOutput() = default;
 
 	/**
+	 * Returns the last value set.
+	 */
+	virtual float getValue() = 0;
+
+	/**
 	 * Writes a value to this output.
 	 *
 	 * @param value The floating-point value to set. Must be in the range
