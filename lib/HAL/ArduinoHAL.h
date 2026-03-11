@@ -23,8 +23,8 @@ public:
 	void digitalWrite(int pin, DigitalValue value) override;
 
 	void beginSerial() override;
-	void print(const char *s) override;
-	void println(const char *s) override;
+	size_t print(const char *s) override;
+	size_t println(const char *s) override;
 
 	void delayMs(unsigned long durationMs) override;
 	unsigned long getTimeMs() override;

@@ -42,12 +42,12 @@ void ArduinoHAL::beginSerial() {
 	Serial.begin(m_serialBaud);
 }
 
-void ArduinoHAL::print(const char *s) {
-	Serial.print(s);
+size_t ArduinoHAL::print(const char *s) {
+	return Serial.print(s);
 }
 
-void ArduinoHAL::println(const char *s) {
-	Serial.println(s);
+size_t ArduinoHAL::println(const char *s) {
+	return Serial.println(s);
 }
 
 // Timing

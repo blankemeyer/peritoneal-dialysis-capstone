@@ -1,6 +1,8 @@
 #ifndef IHAL_H
 #define IHAL_H
 
+#include <stddef.h>
+
 /**
  * Hardware Abstraction Layer Interface
  *
@@ -96,8 +98,9 @@ public:
 	 * Transmits an ASCII string over serial.
 	 *
 	 * @param s The NUL-terminated ASCII string to write.
+	 * @return The number of bytes written.
 	 */
-	virtual void print(const char *s) = 0;
+	virtual size_t print(const char *s) = 0;
 
 	/**
 	 * Transmits an ASCII string with trailing newline over serial.
@@ -105,9 +108,10 @@ public:
 	 * The string @a s is written, followed by an appropriate end-of-line
 	 * indicator (e.g., CR-LF).
 	 *
-	 * @param s The NUL-termianted ASCII string to write.
+	 * @param s The NUL-terminated ASCII string to write.
+	 * @return The number of bytes written.
 	 */
-	virtual void println(const char *s) = 0;
+	virtual size_t println(const char *s) = 0;
 
 	// Timing
 
