@@ -14,7 +14,7 @@ void PWMOutput::setValue(float dutyCycle) {
 	assert(dutyCycle >= 0.f);
 	assert(dutyCycle <= 1.f);
 
-	int quant = (int)(dutyCycle * (float)MAX_QUANT);
+	int quant = static_cast<int>(dutyCycle * static_cast<float>(MAX_QUANT));
 
 	m_hal.analogWrite(m_pin, quant);
 }
