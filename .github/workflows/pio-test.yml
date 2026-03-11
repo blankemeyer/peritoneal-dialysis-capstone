@@ -1,7 +1,7 @@
 on: pull_request
 
 jobs:
-  run:
+  compile-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -13,7 +13,7 @@ jobs:
           key: ${{ runner.os }}-pio
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.14"
+          python-version: 3.14
       - run: pip install --upgrade platformio
       - run: pio run -e uno
       - run: pio test -e native

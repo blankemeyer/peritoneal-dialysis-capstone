@@ -1,0 +1,15 @@
+---
+Checks: >
+  *,
+  -cppcoreguidelines-*,
+  -llvmlibc-*,
+  -llvm-header-guard,
+  -modernize-use-trailing-return-type,
+  -modernize-deprecated-headers,
+  -hicpp-deprecated-headers,
+  -bugprone-easily-swappable-parameters,
+  -hicpp-no-array-decay,
+  -fuchsia-default-arguments-calls,
+  -fuchsia-statically-constructed-objects,
+  -cert-err58-cpp,
+...

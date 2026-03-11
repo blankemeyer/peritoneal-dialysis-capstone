@@ -1,14 +1,10 @@
 #if defined(ARDUINO_AVR_UNO)
 
-#include "Arduino.h"
+#include <Arduino.h>
 
-void setup() {
+void setup() {}
 
-}
-
-void loop() {
-
-}
+void loop() {}
 
 #else
 

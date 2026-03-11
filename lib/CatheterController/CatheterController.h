@@ -3,7 +3,7 @@
 
 /**
  * Catheter Controller
- * 
+ *
  * Owns the two channels and a display. Has an update method to update
  * those. This class is what main.cpp will interact with.
  */
