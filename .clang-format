@@ -10,4 +10,7 @@ KeepEmptyLines:
   AtEndOfFile: false
   AtStartOfBlock: false
   AtStartOfFile: false
+AlignAfterOpenBracket: BlockIndent
+AlignOperands: DontAlign
+AlwaysBreakBeforeMultilineStrings: true
 ...
