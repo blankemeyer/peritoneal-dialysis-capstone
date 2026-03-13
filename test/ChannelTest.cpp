@@ -7,12 +7,12 @@ using ::testing::Return;
 
 class MockInput : public IInput {
 public:
-	MOCK_METHOD(float, getValue, (), (const, override));
+	MOCK_METHOD(float, getValue, (), (override));
 };
 
 class MockOutput : public IOutput {
 public:
-	MOCK_METHOD(float, getValue, (), (const, override));
+	MOCK_METHOD(float, getValue, (), (override));
 	MOCK_METHOD(void, setValue, (float value), (override));
 };
 
@@ -20,15 +20,7 @@ class ChannelTest : public testing::Test {
 protected:
 	MockInput input;
 	MockOutput output;
-	Channel *channel;
-
-	ChannelTest() {
-		channel = new Channel(&input, &output);
-	}
-
-	~ChannelTest() {
-		delete channel;
-	}
+	Channel channel = Channel(input, output);
 };
 
 TEST_F(ChannelTest, TransmitsZero) {
@@ -38,8 +30,8 @@ TEST_F(ChannelTest, TransmitsZero) {
 
 	EXPECT_CALL(output, getValue()).WillOnce(Return(0));
 
-	channel->update();
-	EXPECT_FLOAT_EQ(channel->getOutputValue(), 0);
+	channel.update();
+	EXPECT_FLOAT_EQ(channel.getOutputValue(), 0);
 }
 
 TEST_F(ChannelTest, TransmitsOne) {
@@ -49,8 +41,8 @@ TEST_F(ChannelTest, TransmitsOne) {
 
 	EXPECT_CALL(output, getValue()).WillOnce(Return(1));
 
-	channel->update();
-	EXPECT_FLOAT_EQ(channel->getOutputValue(), 1);
+	channel.update();
+	EXPECT_FLOAT_EQ(channel.getOutputValue(), 1);
 }
 
 TEST_F(ChannelTest, TransmitsIntermediateValue) {
@@ -60,8 +52,8 @@ TEST_F(ChannelTest, TransmitsIntermediateValue) {
 
 	EXPECT_CALL(output, getValue()).WillOnce(Return(0.75));
 
-	channel->update();
-	EXPECT_FLOAT_EQ(channel->getOutputValue(), 0.75);
+	channel.update();
+	EXPECT_FLOAT_EQ(channel.getOutputValue(), 0.75);
 }
 
 TEST_F(ChannelTest, UpdatesWithInput) {
@@ -72,8 +64,8 @@ TEST_F(ChannelTest, UpdatesWithInput) {
 
 	EXPECT_CALL(output, getValue()).WillOnce(Return(0.25)).WillOnce(Return(0.75));
 
-	channel->update();
-	EXPECT_FLOAT_EQ(channel->getOutputValue(), 0.25);
-	channel->update();
-	EXPECT_FLOAT_EQ(channel->getOutputValue(), 0.75);
+	channel.update();
+	EXPECT_FLOAT_EQ(channel.getOutputValue(), 0.25);
+	channel.update();
+	EXPECT_FLOAT_EQ(channel.getOutputValue(), 0.75);
 }
