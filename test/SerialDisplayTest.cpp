@@ -1,6 +1,8 @@
 #include <MockHAL.h>
 #include <SerialDisplay.h>
 
+using ::testing::StrEq;
+
 class SerialDisplayTest : public testing::Test {
 protected:
 	MockHAL hal;
@@ -18,7 +20,7 @@ TEST_F(SerialDisplayTest, DisplaysZeros) {
 		"Wire 1 Power Level:\t0%\n"
 		"Wire 2 Power Level:\t0%\n";
 
-	EXPECT_CALL(hal, println(expected));
+	EXPECT_CALL(hal, println(StrEq(expected)));
 
 	display.update(0, 0);
 }
@@ -28,7 +30,7 @@ TEST_F(SerialDisplayTest, DisplaysHundreds) {
 		"Wire 1 Power Level:\t100%\n"
 		"Wire 2 Power Level:\t100%\n";
 
-	EXPECT_CALL(hal, println(expected));
+	EXPECT_CALL(hal, println(StrEq(expected)));
 
 	display.update(1, 1);
 }
@@ -38,7 +40,7 @@ TEST_F(SerialDisplayTest, DisplaysMixedValues) {
 		"Wire 1 Power Level:\t25%\n"
 		"Wire 2 Power Level:\t75%\n";
 
-	EXPECT_CALL(hal, println(expected));
+	EXPECT_CALL(hal, println(StrEq(expected)));
 
 	display.update(0.25, 0.75);
 }
@@ -48,7 +50,7 @@ TEST_F(SerialDisplayTest, RoundsToTheNearestPercent) {
 		"Wire 1 Power Level:\t44%\n"
 		"Wire 2 Power Level:\t56%\n";
 
-	EXPECT_CALL(hal, println(expected));
+	EXPECT_CALL(hal, println(StrEq(expected)));
 
 	display.update(0.4444, 0.5555);
 }
