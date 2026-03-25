@@ -53,9 +53,9 @@ size_t ArduinoHAL::println(const char *s) {
 // Timing
 
 void ArduinoHAL::delayMs(unsigned long durationMs) {
-	delay(durationMs);
+	::delay(durationMs);
 }
 
 unsigned long ArduinoHAL::getTimeMs() {
-	return millis();
+	return ::millis();
 }
