@@ -25,6 +25,13 @@ AnalogValue ArduinoHAL::getMaxAnalogWriteQuant() const {
 
 // Digital I/O
 
+void ArduinoHAL::configurePin(int pin, PinMode mode) {
+	// NOTE: The enumeration constants 'InputMode' and 'OutputMode' are aligned
+	//       with the Arduino macros 'INPUT' and 'OUTPUT'.
+	assert(mode == INPUT || mode == OUTPUT);
+	::pinMode(pin, mode);
+}
+
 DigitalValue ArduinoHAL::digitalRead(int pin) {
 	return static_cast<DigitalValue>(::digitalRead(pin));
 }
