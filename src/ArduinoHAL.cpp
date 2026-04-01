@@ -1,7 +1,5 @@
-#include <ArduinoHAL.h>
-
 #include <Arduino.h>
-
+#include <ArduinoHAL.h>
 #include <assert.h>
 
 ArduinoHAL::ArduinoHAL(int serialBaud) : m_serialBaud{serialBaud} {}
@@ -42,10 +40,12 @@ void ArduinoHAL::beginSerial() {
 	Serial.begin(m_serialBaud);
 }
 
+// NOLINTNEXTLINE(readability-identifier-length)
 size_t ArduinoHAL::print(const char *s) {
 	return Serial.print(s);
 }
 
+// NOLINTNEXTLINE(readability-identifier-length)
 size_t ArduinoHAL::println(const char *s) {
 	return Serial.println(s);
 }

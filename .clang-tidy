@@ -12,4 +12,5 @@ Checks: >
   -fuchsia-default-arguments-calls,
   -fuchsia-statically-constructed-objects,
   -cert-err58-cpp,
+  -google-runtime-int,
 ...

@@ -13,7 +13,6 @@
  * Implementation of the HAL for Arduino. This class provides Arduino-specific
  * implementations of all hardware operations defined in the IHAL interface.
  */
-
 class ArduinoHAL : public IHAL {
 public:
 	ArduinoHAL(int serialBaud);

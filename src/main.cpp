@@ -3,13 +3,14 @@
 #include <CatheterController.h>
 #include <SerialDisplay.h>
 
-#define INPUT_PIN_1 A0
-#define INPUT_PIN_2 A2
-#define OUTPUT_PIN_1 10
-#define OUTPUT_PIN_2 11
-
-#define BAUD_RATE 9600
-#define DELAY_MS 100
+enum {
+	INPUT_PIN_1 = A0,
+	INPUT_PIN_2 = A2,
+	OUTPUT_PIN_1 = 10,
+	OUTPUT_PIN_2 = 11,
+	BAUD_RATE = 9600,
+	DELAY_MS = 100,
+};
 
 ArduinoHAL hal(BAUD_RATE);
 SerialDisplay display(hal);

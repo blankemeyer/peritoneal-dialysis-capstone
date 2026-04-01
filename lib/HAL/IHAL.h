@@ -7,14 +7,6 @@
 
 #include <stddef.h>
 
-/**
- * Hardware Abstraction Layer Interface
- *
- * This interface defines all hardware operations needed by the application.
- * Different platforms (Arduino, Raspberry Pi, etc.) implement this interface
- * to provide platform-specific functionality.
- */
-
 using AnalogValue = int;
 
 enum DigitalValue {
@@ -22,6 +14,13 @@ enum DigitalValue {
 	DigitalHigh = 1,
 };
 
+/**
+ * Hardware Abstraction Layer Interface
+ *
+ * This interface defines all hardware operations needed by the application.
+ * Different platforms (Arduino, Raspberry Pi, etc.) implement this interface
+ * to provide platform-specific functionality.
+ */
 class IHAL {
 public:
 	virtual ~IHAL() = default;
