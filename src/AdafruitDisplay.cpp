@@ -6,8 +6,13 @@
 static constexpr uint8_t DISPLAY_REVISION{INITR_MINI160x80_PLUGIN};
 
 // Instantiate Adafruit driver using hardware SPI.
+
 AdafruitDisplay::AdafruitDisplay(int csPin, int dcPin)
-		: m_driver{csPin, dcPin, /*rstPin=*/-1} {}
+		// TODO: should we assert that 'csPin' and 'dcPin' are in range for
+		// 'int8_t'?
+		: m_driver{
+				static_cast<int8_t>(csPin), static_cast<int8_t>(dcPin), /*rstPin=*/-1
+			} {}
 
 void AdafruitDisplay::initializeDriver() {
 	m_driver.initR(DISPLAY_REVISION);
