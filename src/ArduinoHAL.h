@@ -22,6 +22,7 @@ public:
 	AnalogValue getMaxAnalogReadQuant() const override;
 	AnalogValue getMaxAnalogWriteQuant() const override;
 
+	void configurePin(int pin, PinMode mode) override;
 	DigitalValue digitalRead(int pin) override;
 	void digitalWrite(int pin, DigitalValue value) override;
 

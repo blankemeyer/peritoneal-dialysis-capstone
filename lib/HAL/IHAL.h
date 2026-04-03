@@ -14,6 +14,11 @@ enum DigitalValue {
 	DigitalHigh = 1,
 };
 
+enum PinMode {
+	InputMode = 0,
+	OutputMode = 1,
+};
+
 /**
  * Hardware Abstraction Layer Interface
  *
@@ -67,6 +72,14 @@ public:
 	virtual AnalogValue getMaxAnalogWriteQuant() const = 0;
 
 	// Digital I/O
+
+	/**
+	 * Configures a pin for use as an input or output.
+	 *
+	 * @param pin The pin number.
+	 * @param mode The mode (input or output) to set.
+	 */
+	virtual void configurePin(int pin, PinMode mode) = 0;
 
 	/**
 	 * Samples a digital input pin.

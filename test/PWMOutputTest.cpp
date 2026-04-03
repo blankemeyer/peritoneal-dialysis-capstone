@@ -8,10 +8,17 @@ class PWMOutputTest : public testing::Test {
 protected:
 	int pin = 0;
 	MockHAL hal;
-	PWMOutput output = PWMOutput(hal, pin);
 };
 
+TEST_F(PWMOutputTest, ConfiguresPin) {
+	EXPECT_CALL(hal, configurePin(pin, OutputMode)).Times(1);
+
+	PWMOutput(hal, pin);
+}
+
 TEST_F(PWMOutputTest, WritesZero) {
+	PWMOutput output(hal, pin);
+
 	EXPECT_CALL(hal, getMaxAnalogWriteQuant()).WillOnce(Return(255));
 
 	EXPECT_CALL(hal, analogWrite(pin, 0));
@@ -21,6 +28,8 @@ TEST_F(PWMOutputTest, WritesZero) {
 }
 
 TEST_F(PWMOutputTest, WritesOne) {
+	PWMOutput output(hal, pin);
+
 	EXPECT_CALL(hal, getMaxAnalogWriteQuant()).WillOnce(Return(255));
 
 	EXPECT_CALL(hal, analogWrite(pin, 255));
@@ -30,6 +39,8 @@ TEST_F(PWMOutputTest, WritesOne) {
 }
 
 TEST_F(PWMOutputTest, WritesIntermediateValue) {
+	PWMOutput output(hal, pin);
+
 	EXPECT_CALL(hal, getMaxAnalogWriteQuant()).WillOnce(Return(255));
 
 	EXPECT_CALL(hal, analogWrite(pin, 127));
@@ -39,6 +50,8 @@ TEST_F(PWMOutputTest, WritesIntermediateValue) {
 }
 
 TEST_F(PWMOutputTest, UpdatesCorrectly) {
+	PWMOutput output(hal, pin);
+
 	EXPECT_CALL(hal, getMaxAnalogWriteQuant())
 		.WillOnce(Return(255))
 		.WillOnce(Return(255));

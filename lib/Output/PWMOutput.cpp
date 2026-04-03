@@ -2,7 +2,9 @@
 #include <assert.h>
 
 PWMOutput::PWMOutput(IHAL &hal, int pin)
-		: m_hal{hal}, m_pin{pin}, m_value{0.f} {}
+		: m_hal{hal}, m_pin{pin}, m_value{0.f} {
+	hal.configurePin(pin, OutputMode);
+}
 
 float PWMOutput::getValue() {
 	return m_value;

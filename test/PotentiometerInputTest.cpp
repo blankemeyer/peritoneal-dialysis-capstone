@@ -8,10 +8,17 @@ class PotentiometerInputTest : public testing::Test {
 protected:
 	int pin = 0;
 	MockHAL hal;
-	PotentiometerInput input = PotentiometerInput(hal, pin);
 };
 
+TEST_F(PotentiometerInputTest, ConfiguresPin) {
+	EXPECT_CALL(hal, configurePin(pin, InputMode)).Times(1);
+
+	PotentiometerInput(hal, pin);
+}
+
 TEST_F(PotentiometerInputTest, ReadsZero) {
+	PotentiometerInput input(hal, pin);
+
 	EXPECT_CALL(hal, getMaxAnalogReadQuant()).WillOnce(Return(1023));
 
 	EXPECT_CALL(hal, analogRead(pin)).WillOnce(Return(0));
@@ -20,6 +27,8 @@ TEST_F(PotentiometerInputTest, ReadsZero) {
 }
 
 TEST_F(PotentiometerInputTest, ReadsOne) {
+	PotentiometerInput input(hal, pin);
+
 	EXPECT_CALL(hal, getMaxAnalogReadQuant()).WillOnce(Return(1023));
 
 	EXPECT_CALL(hal, analogRead(pin)).WillOnce(Return(1023));
@@ -28,6 +37,8 @@ TEST_F(PotentiometerInputTest, ReadsOne) {
 }
 
 TEST_F(PotentiometerInputTest, ReadsIntermediateValue) {
+	PotentiometerInput input(hal, pin);
+
 	EXPECT_CALL(hal, getMaxAnalogReadQuant()).WillOnce(Return(1023));
 
 	EXPECT_CALL(hal, analogRead(pin)).WillOnce(Return(512));
@@ -36,6 +47,8 @@ TEST_F(PotentiometerInputTest, ReadsIntermediateValue) {
 }
 
 TEST_F(PotentiometerInputTest, UpdatesCorrectly) {
+	PotentiometerInput input(hal, pin);
+
 	EXPECT_CALL(hal, getMaxAnalogReadQuant())
 		.WillOnce(Return(1023))
 		.WillOnce(Return(1023));

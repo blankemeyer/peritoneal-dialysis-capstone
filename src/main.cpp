@@ -19,11 +19,6 @@ CatheterController controller(
 );
 
 void setup() {
-	pinMode(INPUT_PIN_1, INPUT);
-	pinMode(INPUT_PIN_2, INPUT);
-	pinMode(OUTPUT_PIN_1, OUTPUT);
-	pinMode(OUTPUT_PIN_2, OUTPUT);
-
 	display.initialize();
 }
 
