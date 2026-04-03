@@ -22,11 +22,11 @@ unsigned AdafruitDisplay::getHeight() const {
 }
 
 unsigned AdafruitDisplay::getTextWidth() const {
-	return DEFAULT_TEXT_HEIGHT;
+	return DEFAULT_TEXT_WIDTH;
 }
 
 unsigned AdafruitDisplay::getTextHeight() const {
-	return DEFAULT_TEXT_WIDTH;
+	return DEFAULT_TEXT_HEIGHT;
 }
 
 void AdafruitDisplay::clearScreen(Color color) {
